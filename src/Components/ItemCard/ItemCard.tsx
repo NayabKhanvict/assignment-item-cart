@@ -54,7 +54,7 @@ const ItemCard = ({ phoneCatalog, metaData }: Props) => {
         <div className={styles.cartMobileImage}>
           <img
             src={
-              "https://img.freepik.com/free-photo/elegant-smartphone-composition_23-2149437106.jpg?t=st=1734715858~exp=1734719458~hmac=6d89753bd8b180d00f8d5078c701bfe1f7fdecb81a2280eee6bb0f5a2f64bc5d&w=900.jpg"
+              "https://img.freepik.com/free-photo/elegant-smartphone-composition_23-2149437106.jpg"
             }
             alt="mobile image"
           />
