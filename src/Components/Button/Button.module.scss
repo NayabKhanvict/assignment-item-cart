@@ -1,0 +1,25 @@
+.button {
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 800;
+  border-radius: 20px;
+  letter-spacing: 0.1px;
+  background-color: #863399;
+
+  &:enabled:hover {
+    filter: brightness(85%);
+  }
+
+  &.full {
+    width: 100%;
+  }
+
+  &.medium {
+    padding: 12px 24px;
+  }
+
+  &.small {
+    padding: 5px 10px;
+  }
+}
