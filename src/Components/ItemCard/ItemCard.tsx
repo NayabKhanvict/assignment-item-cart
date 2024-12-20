@@ -8,23 +8,25 @@ import { useLayoutContext } from "../../hooks";
 import { useState } from "react";
 
 type Props = {
-  phoneCatalog: ItemCardProps[];
+  phoneCatalog: ItemCardProps[] | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  metaData: any;
 };
 
-const ItemCard = ({ phoneCatalog }: Props) => {
+const ItemCard = ({ phoneCatalog, metaData }: Props) => {
   const { addToCart, removeFromCart, cartItems } = useLayoutContext();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const currentItem = phoneCatalog[currentIndex];
-  const { image, title, price } = currentItem;
-
+  const currentItem = phoneCatalog && phoneCatalog[currentIndex];
+  if (!currentItem) return null;
+  const { images, title, price } = currentItem;
   const isItemInCart = cartItems.some((item) => item.title === title);
-
+  console.log("images", images[0].resourceURL);
   const handleButtonClick = () => {
     if (isItemInCart) {
       removeFromCart(title);
     } else {
-      addToCart({ image, title, price });
+      addToCart({ images, title, price });
     }
   };
 
@@ -50,7 +52,12 @@ const ItemCard = ({ phoneCatalog }: Props) => {
           <img src={leftArrow} alt="left arrow" />
         </div>
         <div className={styles.cartMobileImage}>
-          <img src={image} alt="mobile image" />
+          <img
+            src={
+              "https://img.freepik.com/free-photo/elegant-smartphone-composition_23-2149437106.jpg?t=st=1734715858~exp=1734719458~hmac=6d89753bd8b180d00f8d5078c701bfe1f7fdecb81a2280eee6bb0f5a2f64bc5d&w=900.jpg"
+            }
+            alt="mobile image"
+          />
         </div>
         <div
           className={styles.cartRightArrow}
@@ -69,7 +76,11 @@ const ItemCard = ({ phoneCatalog }: Props) => {
           </Button>
         </div>
         <span className={styles.cartPrice}>
-          Total Price: <span>${price}</span>
+          Total Price:{" "}
+          <span>
+            {metaData.currency_symbol}
+            {price}
+          </span>
         </span>
       </div>
     </div>

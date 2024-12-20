@@ -1,10 +1,10 @@
 import { createContext, useState, ReactNode } from "react";
-import { CartProps } from "../types";
+import { ItemCardProps } from "../types";
 
 export interface ILayoutContext {
-  cartItems: CartProps[];
+  cartItems: ItemCardProps[];
   totalCartItems: number;
-  addToCart: (item: CartProps) => void;
+  addToCart: (item: ItemCardProps) => void;
   removeFromCart: (title: string) => void;
   clearCart: () => void;
   toggleCartVisibility: () => void;
@@ -16,10 +16,10 @@ export const LayoutContext = createContext<ILayoutContext | undefined>(
 );
 
 const LayoutProvider = ({ children }: { children: ReactNode }) => {
-  const [cartItems, setCartItems] = useState<CartProps[]>([]);
+  const [cartItems, setCartItems] = useState<ItemCardProps[]>([]);
   const [isCartVisible, setIsCartVisible] = useState(false);
 
-  const addToCart = (item: CartProps) => {
+  const addToCart = (item: ItemCardProps) => {
     setCartItems((prevItems) => [...prevItems, item]);
   };
 

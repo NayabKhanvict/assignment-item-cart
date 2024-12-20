@@ -1,5 +1,6 @@
 export interface ItemCardProps {
-  image: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  images: any[];
   title: string;
   price: string;
 }
